@@ -1,0 +1,31 @@
+// 2.30(The BMI calculator).cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//
+
+#include<iostream>
+#include<string>
+using namespace std;
+
+int main()
+{
+	double a;
+	double b;
+	double c;
+
+	cout << "Enter your weight(Kg)";
+	cin >> a;
+	cout << "Enter your height(m)";
+	cin >> b;
+
+	c = a / (b * b);
+
+
+	if (c >= 30)
+		cout << "Your BMI is Obese" << endl;
+	else if (25 < c && c < 30)
+		cout << "Your BMI is Overweight" << endl;
+	else if (18.5 < c && c < 25)
+		cout << "Your BMI is Normal" << endl;
+	else if (c <= 18.5)
+		cout << "Your BMI is Underweight" << endl;
+
+}
