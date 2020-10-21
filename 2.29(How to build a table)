@@ -1,0 +1,16 @@
+// 2.29(How to build a table).cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//
+
+
+
+#include<iostream>
+int main()
+{
+	using namespace std;
+
+	cout << "integer	square	cube" << endl;       //想要空出间隔需按一次tab键
+	int i ;
+	for (i = 0; i < 11; i++)
+		cout << i << "	" << i * i << "	" << i * i * i << endl;
+
+}
