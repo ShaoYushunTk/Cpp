@@ -1,0 +1,112 @@
+// Don't touch the rectangle.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//别碰白块（操控小球跳跃来躲避白块）
+
+#include<iostream>
+#include<string>
+#include<graphics.h>
+#include<conio.h>
+#include<stdio.h>
+
+int main()
+{
+	int width, height;//创建界面长宽
+	width = 600;
+	height = 400;
+	initgraph(width, height);//创建画布
+
+	float radius, ball_x, ball_y, ball_vy, gravity;//创建小球
+	radius = 20;
+	ball_x = width / 4;
+	ball_y = height - radius;  //创建小球初始坐标(x坐标为宽度1/4，y坐标为高度减半径，即落在地面上)
+	ball_vy = 0;
+	gravity = 0.6;
+
+	float rect_left_x, rect_top, rect_width, rect_height;//创建方块
+	float rect_vx;
+	rect_height = 100;
+	rect_width = 20;
+	rect_left_x = width * 3 / 4;
+	rect_top = height - rect_height;
+	rect_vx = -3;
+
+	int score = 0; //创建分数
+	int isBallonFloor = 1;//创建一个变量：判断小球是否在地上,true为1
+
+	while (1)           //while(1)即为一直重复循环
+	{
+		if (_kbhit())
+		{
+			char input = _getch();      //获得输入字符
+			if (input == ' ' && isBallonFloor == 1)
+			{
+				ball_vy = -18;
+				isBallonFloor = 0;  //当小球起跳时，变量isBallonFloor赋值为0
+			}
+		}                   //如果按下空格键，给小球一个向上的初速度，小球会受到重力影响而落地
+
+		ball_vy = ball_vy + gravity;
+		ball_y = ball_y + ball_vy;   //使小球移动
+		if (ball_y >= height - radius)  //如果小球落到地面上
+		{
+			ball_vy = 0;
+			ball_y = height - radius;
+			isBallonFloor = 1;
+		}
+
+		rect_left_x = rect_left_x + rect_vx;  //使方块移动
+		if (rect_left_x <= 0)    //如果方块移到最左端
+		{
+			score = score + 1;
+			rect_left_x = width;//当方块移到最左端，重新在最右端出现
+			rect_height = rand() % int(height / 4) + height / 4;       //使用随机函数rand()，随机设置方块的高度范围在1/4 height到1/2 height之间
+			rect_vx = rand() / float(RAND_MAX) * 4 - 7;           /*随机设置方块速度（RAND_MAX指的是C语言标准库 <stdlib.h> 中定义的一个宏。
+																  经预编译阶段处理后，它展开为一个整数类型的常量表达式。
+																  RAND_MAX 是 <stdlib.h> 中伪随机数生成函数 rand 所能返回的最大数值。
+																  这意味着，任何一次对 rand 的调用，都将得到一个 0~RAND_MAX 之间的伪随机数。）
+																  rand()/float(RAND_MAX)即为产生一个0到1的数*/
+		}
+
+		if ((rect_left_x <= ball_x + radius)
+			&& (rect_left_x + rect_width >= ball_x - radius)
+			&& (height - rect_height <= ball_y + radius))//如果小球接触到方块
+		{
+			score = 0;
+			Sleep(100);
+		}   //判断小球和方块是否接触，如果接触，则延时100ms
+
+		cleardevice();  //清空画面
+
+		fillrectangle(rect_left_x, height - rect_height, rect_left_x + rect_width, height);//绘制方块
+		fillcircle(ball_x, ball_y, radius);  //绘制小球
+
+		TCHAR s[20];//定义字符串数组
+		swprintf_s(s, _T("%d"), score);  //将整数型的score转化成字符串
+		settextstyle(40, 0, _T("宋体")); //设置文字大小，字体
+		outtextxy(50, 30, s);  //输出得分文字
+
+		Sleep(10); //暂停10ms；
+
+		if (20 <= score && score <= 50)  //加大游戏难度
+		{
+			rect_vx = rand() / float(RAND_MAX) * 4 - 10;
+		}
+		if (50 < score && score <= 100)
+		{
+			rect_vx = rand() / float(RAND_MAX) * 4 - 13;
+		}
+		if (100 < score && score <= 200)
+		{
+			rect_vx = rand() / float(RAND_MAX) * 4 - 15;
+		}
+		if (200 < score && score <= 500)
+		{
+			rect_vx = rand() / float(RAND_MAX) * 4 - 18;
+		}
+		if (score > 500)
+		{
+			rect_vx = rand() / float(RAND_MAX) * 4 - 5;
+		}
+
+
+	}
+}
