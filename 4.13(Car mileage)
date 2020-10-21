@@ -1,0 +1,24 @@
+// 4.13(Car mileage).cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//汽车里程
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	double miles = 0, gallons = 0, MPG = 0, Total_MPG = 0, Total_miles = 0, Total_gallons = 0;
+
+	while (miles!=-1)
+	{
+		cout << "Enter miles driven(-1 to quit): ";
+		cin >> miles;
+		cout << "Enter gallons used: ";
+		cin >> gallons;
+		MPG = miles / gallons;
+		cout << "MPG this trip: " << MPG << endl;
+		Total_miles += miles;
+		Total_gallons += gallons;
+		Total_MPG = Total_miles / Total_gallons;
+		cout << "Total MPG: " << Total_MPG << endl;
+		cout << endl;
+	}
+}
