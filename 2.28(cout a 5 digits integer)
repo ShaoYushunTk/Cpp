@@ -1,0 +1,39 @@
+// 2.28(cout a 5 digits integer).cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//输入一个5位数，输出对应5个数字
+
+
+#include<iostream>
+#include<string>
+using namespace std;
+
+int main()
+{
+	int a = 0;
+	int b = 0;
+	int c = 0;
+	int d = 0;
+	int e = 0;
+	int f = 0;
+	int g = 0;
+	int h = 0;
+	int i = 0;
+	int j = 0;
+
+	cout << "Enter a 5 digits integer: ";
+	cin >> a;
+
+	b = a / 10000;
+	c = a % 10000;
+	d = c / 1000;
+	e = c % 1000;
+	f = e / 100;
+	g = e % 100;
+	h = g / 10;
+	i = g % 10;
+	j = i;
+
+	cout << "The result is: \n"
+		<< b << "	" << d << "	" << f << "	" << h << "	" << j << endl;
+
+
+}
