@@ -1,0 +1,54 @@
+// 3.4chapter(How to create a class plus).cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//
+
+
+
+// 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
+// 调试程序: F5 或调试 >“开始调试”菜单
+
+// 入门使用技巧: 
+//   1. 使用解决方案资源管理器窗口添加/管理文件
+//   2. 使用团队资源管理器窗口连接到源代码管理
+//   3. 使用输出窗口查看生成输出和其他消息
+//   4. 使用错误列表窗口查看错误
+//   5. 转到“项目”>“添加新项”以创建新的代码文件，或转到“项目”>“添加现有项”以将现有代码文件添加到项目
+//   6. 将来，若要再次打开此项目，请转到“文件”>“打开”>“项目”并选择 .sln 文件
+
+
+#include<iostream>
+#include<string>
+using namespace std;
+
+class Gradebook
+{
+public:
+	void setcourseName(string name) //创建一个setcourseName函数，包含形参name，作用是将name赋值给courseName
+	{
+		courseName = name;
+	}
+	string getcourseName() const  //创建一个getcourseName函数，不包含形参，不可调用更改类中的对象，作用是返回一个courseName值
+	{
+		return courseName;
+	}
+	void displayMessage()const //创建一个displayMessage函数，不包含形参，不可调用更改类中的对象，作用是调用getcourseName函数并输出
+	{
+		cout << "Welcome to " << getcourseName() << endl;
+	}
+private:
+	string courseName;  //private（成员访问符）字符串 courseName ，在private之后声明的变量或函数，只能被声明它们的类的成员函数（或者是“友元”）所访问
+};
+
+int main()
+{
+	string nameofCourse; //声明变量nameofCourse
+	Gradebook myGradebook;//创建对象myGradebook
+
+	cout << "Initial course name is" << myGradebook.getcourseName() << endl; //尝试输出myGradebook中的getcourseName（）函数，但因为还未曾给courseName赋值
+																			 //因此输出结果为空
+	cout << "\nEnter your course " << endl;
+	getline(cin, nameofCourse);  //通过键盘输入（cin）给nameofCourse赋值;getline可以输入带空格的一串字符，但cin不能连续输入，遇到空格就会停止
+	myGradebook.setcourseName(nameofCourse);  //执行setcourseName函数，即把nameofCourse(实参)赋值给name(形参)，name再赋值给courseName
+	cout << endl;
+	myGradebook.displayMessage();  //此时执行displayMessage函数，即调用getcourseName函数并输出，此时就存在返回值courseName了
+
+}
