@@ -1,0 +1,21 @@
+// 4.17（Find the Largest in 10 numbers）.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//输入10个数，找最大值
+//while counter number largest
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int number = 0;
+	int counter = 1;
+	int largest = 0;
+	while (counter <= 10)
+	{
+		cout << "当前输入第" << counter << "个数: ";
+		cin >> number;
+		counter++;
+		if (number > largest)
+			largest = number;
+	}
+	cout << "最大值： " << largest << endl;
+}
