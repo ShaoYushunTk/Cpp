@@ -1,0 +1,38 @@
+// 4.25(Stars Square).cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int stars = 0;
+	int row = 1;
+	int column = 0;
+
+	cout << "Enter the side length of the square: ";
+	cin >> stars;
+
+	while (row <= stars)
+	{
+		column = 1;
+
+		while (column <= stars)
+
+		{
+			if (row == 1)
+				cout << "*";
+			else if (row == stars)
+				cout << "*";
+			else if (column == 1)
+				cout << "*";
+			else if (column == stars)
+				cout << "*";
+			else
+				cout << " ";
+			column++;
+		}
+		cout << endl;
+		row++;
+	}
+}
