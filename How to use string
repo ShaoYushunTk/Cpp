@@ -1,0 +1,31 @@
+// How to use string.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//
+
+
+
+#include<iostream>
+#include<string>  //string字符串，
+int main()
+{
+	using namespace std;
+
+	string s1;
+	s1 = "QWERASDSD";
+	cout << s1 << endl;
+
+	string s2(s1);
+	s2 = "asdsdasd";
+	cout << s2 << endl;
+
+	string s3("value");
+	cout << s3 << endl;
+
+	string s4(10, 'c');
+	cout << s4 << endl;
+
+	string s5("856sadasd23");
+	cout << s5 << endl;
+
+    
+	return 0;
+}
