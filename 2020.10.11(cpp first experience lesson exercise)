@@ -1,0 +1,374 @@
+// Exercise1.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//1.	某基金年化利率3.7%，现存入一万元本金，请问30天后利息有多少钱？
+//计算公式：一天收益 = 本金 * 年化利率 / 365。
+
+
+#include <iostream>
+#include<string>
+using namespace std;
+
+int main()
+{
+	float Benjin = 10000;
+	float Lilv = 0.037;
+	float Lixi;
+	Lixi = Benjin * Lilv / 365 * 30;
+	cout << Lixi << endl;
+}
+
+
+// Exercise2.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//2.	设计一个过关类的小游戏，根据输入的数字，直接进入对应的关卡。如，输入的是数字3，控制台输出"当前进入第三关"。
+
+#include <iostream>
+#include<string>
+using namespace std;
+
+int main()
+{
+	int Number = 0;
+	cout << "Please Enter the Number: ";
+	cin >> Number;
+	cout << "\n当前进入第" << Number << "关" << endl;
+}
+
+
+// Exercise3.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+/*
+3.	公司年会抽奖：
+①“1”代表“一等奖”，奖品是“42寸彩电”；
+②“2”代表“二等奖”，奖品是“光波炉”；
+③“3”代表“三等奖”，奖品是“加湿器”；
+④“4”代表“安慰奖”，奖品是“16G - U盘”。
+根据控制台输入的奖号，输出与该奖号对应的奖品。*/
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int PrizeNumber = 0;
+	cout << "Enter the PrizeNumber: ";
+	cin >> PrizeNumber;
+
+	if (PrizeNumber == 1)
+		cout << "一等奖，奖品是42寸彩电" << endl;
+	if (PrizeNumber == 2)
+		cout << "二等奖，奖品是光波炉" << endl;
+	if (PrizeNumber == 3)
+		cout << "三等奖，奖品是加湿器" << endl;
+	if (PrizeNumber == 4)
+		cout << "安慰奖，奖品是16G-U盘" << endl;
+}
+
+
+// Exercise4.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//计程车计费标准，在3公里内起步价为6元，超出3公里按每公里2元收费，计算坐计程车所花费用。
+//x < 3 ,6;x>3, (6 + (x - 3) * 2)
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int Kilometre=0, Money=0;
+	cout << "Enter the Kilometre: ";
+	cin >> Kilometre;
+
+	if (Kilometre <= 3)
+		Money = 6;
+	if (Kilometre > 3)
+		Money = 6 + (Kilometre - 3) * 2;
+	cout << "The Money is " << Money << endl;
+
+}
+
+
+// Exercise5.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//编程求解一元二次方程ax^2+bx+c=0。用户输入a、b、c的值，求解方程的实根x1和x2，并输出结果。
+
+#include <iostream>
+#include<string>
+#include<math.h>
+
+; using namespace std;
+
+int main()
+{
+	float a, b, c, d,e=0,x1=0,x2=0;
+	cout << "Enter a: ";
+	cin >> a;
+	cout << "Enter b: ";
+	cin >> b;
+	cout << "Enter c: ";
+	cin >> c;
+
+	d = b * b - 4 * a * c;
+	e = sqrt(d);
+
+	if (d < 0)
+	{
+		cout << "方程无解" << endl;
+	}
+	if (d == 0)
+	{
+		x1 = x2 = (-b) / (2 * a);
+		cout << "x1=x2= " << x1 << endl;
+	}
+	if (d > 0)
+	{
+		x1 = (-b + e) / (2 * a);
+		x2 = (-b - e) / (2 * a);
+		cout << "x1= " << x1 << endl
+			<< "x2= " << x2 << endl;
+	}
+}
+
+
+// Exercise6.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//6. 自动售卖机有三种饮料，价格分别为3元、5元、7元。自动售卖机仅支持1元硬币支付，请编写该售卖机自动收费系统。
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int a = 3;
+	int b = 5;
+	int c = 7;
+	int times = 0;
+	int Money = 0;
+	int Charge = 0;
+  
+  cout << "Enter your times: ";
+	cin >> times;
+	
+	Money = times * 1;
+
+	if (Money < a)
+	{
+		cout << "Not Enough." << endl;
+
+	}
+	if (a <= Money && Money < b)
+	{
+		Charge = Money - a;
+		cout << "You can buy the 3 yuan one.Your Charge is: " << Charge << endl;
+
+	}
+	if (b < Money && Money < c)
+	{
+		Charge = Money - b;
+		cout << "You can buy the 5 yuan one.Your Charge is: " << Charge << endl;
+
+	}
+	if (Money >= c)
+	{
+		Charge = Money - c;
+		cout << "You can buy the 7 yuan one.Your Charge is: " << Charge << endl;
+	}
+}
+
+
+// Exercise7.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//7. 编程求n!=1*2*3…*n，n由键盘输入。
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int n, i, result=1;
+
+	cout << "Enter the Number: ";
+	cin >> n;
+
+	for (i = 1; i < (n + 1); i++)
+	{
+		result=result* i;
+	}
+		cout << "The result is : " << result << endl;
+	
+}
+
+
+// Exercise8.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//8. 使用for循环，判数某个输入的数，是否是素数。
+
+#include <iostream>
+#include<math.h>
+using namespace std;
+
+int main()
+{
+	int Number=0, i;
+
+	cout << "Enter A Number: ";
+	cin >> Number;
+   
+  for (i = 2; i < Number; i++)
+		{
+      if (Number % i == 0)break;
+		}
+		
+  if (i == Number)
+		cout << Number << "是素数" << endl;
+	else
+		cout << Number << "不是素数" << endl;
+}
+
+
+// Exercise9.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//9. 一个球从80米高度自由落下，每次落地后反弹的高度为原高度的一半，第6次反弹多少米？
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	float a = 80;
+	int i;
+
+	for (i = 1; i <= 6; i++)
+	{
+		a = a / 2;
+   }
+	cout << a << endl;
+}
+
+
+// Exercise10.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//10. 某公司新建4*6个办公卡位，现只用第1排第3个、第3排第2和第4个卡位被使用，在控制台输出尚未使用的新卡位。
+
+#include <iostream>
+ using namespace std;
+
+int main()
+{
+	int i, j;
+	 
+	for (i = 1; i <= 4; i++)
+	{
+		for (j = 1; j <= 6; j++)
+		{
+			if (((i == 1) && (j == 3)) || ((i == 3) && (j == 2) )|| ((i == 3) && (j == 4)))
+			{
+				continue;
+			}
+			cout << i << "行" << j << "个" << endl;
+
+		}
+		cout << endl;
+	}
+}
+
+
+// Exercise11.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//11. 某剧院发售演出门票，演播厅观众席有8行，每行有10个座位。为了不影响观众视角，在发售门票时，屏蔽掉前面4行的最左一列和最右一列的座位。
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int i, j;
+	for (i = 1; i <= 8; i++)
+	{
+		for (j = 1; j <= 10; j++)
+		{
+			if (((i <= 4) && (j == 1)) || ((i <= 4) && (j == 10)))
+			{
+				continue;
+			}
+			cout << i << "行" << j << "个" << endl;
+
+		}
+		cout << endl;
+	}
+}
+
+
+// Exercise12.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//
+//12. 我国古代的乘法口诀表以"九九八十一"开始， 以"一一得一"结束，即顺序是倒过来的，请用程序输出"倒序"的乘法口诀表。9 * 9 = 81 9 * 8 = 72 9 * 7 = 63 ...
+
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+	int i, j;
+	for (i = 9; i >= 1; i = i - 1)
+	{
+		for (j = 9; j >= 1; j = j - 1)
+		{
+			cout << setw(2) << i << "*" << j << "=" << setw(2) << i * j;
+
+		}
+
+		cout << endl;
+
+	}
+
+}
+
+
+// Exercise13.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//13. 5文钱可以买一只公鸡，3文钱可以买一只母鸡，1文钱可以买三只雏鸡，现在用100文钱买100只鸡，那么各有公鸡、母鸡、雏鸡多少只？
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int Gongji;
+	int Muji;
+	int Chuji;
+	
+	
+	for (Gongji = 0; Gongji <= 20; Gongji++)
+	{
+		for (Muji = 0; Muji <= 33; Muji++)
+		{
+			for (Chuji = 0; Chuji <= 300; Chuji+=3)
+				if (5 * Gongji + 3 * Muji + Chuji / 3 == 100 && Gongji + Muji + Chuji == 100)
+				{
+					cout << "公鸡" << Gongji << endl
+						<< "母鸡" << Muji << endl
+						<< "雏鸡" << Chuji << endl;
+					cout << endl;
+				}
+			
+		}
+	}
+
+
+}
+
+
+// Exercise14.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+// Exercise14.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//14. 请用控制台输出同学成绩（A,B,C,D）对应的评价，A对应“very good”，B对应“good”，C对应“normal”，D对应“failure”。
+
+#include <iostream>
+#include<string>
+using namespace std;
+
+int main()
+{
+	string Score;
+	cout << "Enter the Score: ";
+	getline(cin, Score);
+
+	if (Score == "A")
+		cout << "very good" << endl;
+	if (Score == "B")
+		cout << "good" << endl;
+	if (Score == "C")
+		cout << "normal" << endl;
+	if (Score == "D")
+		cout << "failure" << endl;
+
+}
