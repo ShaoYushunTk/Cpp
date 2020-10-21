@@ -1,0 +1,43 @@
+// 4.34(factorial).cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//计算阶乘并估算e的值
+#include<iostream>
+using namespace std;
+double Estimate_e(int n);
+
+int main()
+{
+	int i = 1;
+	int result = 1;
+	int Number = 0;
+	int n = 0;
+
+	cout << "Enter a Number: ";
+	cin >> Number;
+
+	while (i<=Number)
+	{
+		result *= i;
+		i++;
+	}
+	cout << "The result is: " << result << endl;
+ 
+	cout << "Enter a Number to estimate the e: ";
+	cin >> n;
+	cout << "The approximation of e is: " << Estimate_e(n) << endl;
+}
+double Estimate_e(int n)
+{
+	double Re_sult=0,re_sult=1,Result;
+	int i = 1;
+	while (i<=n)
+	{
+		double a=1;
+		re_sult *= i;
+		a = 1.0 / re_sult;
+		Re_sult += a;
+		i++;
+	}
+	Result = Re_sult + 1;
+	return Result;
+}
+
