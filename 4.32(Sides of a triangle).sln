@@ -1,31 +1,50 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30517.126
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "4.32(Sides of a triangle)", "4.32(Sides of a triangle).vcxproj", "{FD9C3A6C-BDD6-404E-A55B-F4A7D943D010}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FD9C3A6C-BDD6-404E-A55B-F4A7D943D010}.Debug|x64.ActiveCfg = Debug|x64
-		{FD9C3A6C-BDD6-404E-A55B-F4A7D943D010}.Debug|x64.Build.0 = Debug|x64
-		{FD9C3A6C-BDD6-404E-A55B-F4A7D943D010}.Debug|x86.ActiveCfg = Debug|Win32
-		{FD9C3A6C-BDD6-404E-A55B-F4A7D943D010}.Debug|x86.Build.0 = Debug|Win32
-		{FD9C3A6C-BDD6-404E-A55B-F4A7D943D010}.Release|x64.ActiveCfg = Release|x64
-		{FD9C3A6C-BDD6-404E-A55B-F4A7D943D010}.Release|x64.Build.0 = Release|x64
-		{FD9C3A6C-BDD6-404E-A55B-F4A7D943D010}.Release|x86.ActiveCfg = Release|Win32
-		{FD9C3A6C-BDD6-404E-A55B-F4A7D943D010}.Release|x86.Build.0 = Release|Win32
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {1C201916-F887-4FF8-B5F4-1F84B57050AC}
-	EndGlobalSection
-EndGlobal
+// 4.32(Sides of a triangle).cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//判断三条边是否能构成一个三角形
+#include <iostream>
+using namespace std;
+
+double Triangle(double a, double b, double c);
+double Right_Triangle(double a, double b, double c);
+
+int main()
+{
+    double a, b, c;
+    
+    cout << "Enter the sides of a triangle: ";
+    cin >> a >> b >> c;
+
+    Triangle(a, b, c);
+    Right_Triangle(a, b, c);
+    
+}
+
+double Triangle(double a, double b, double c)
+{
+    bool i = 0;
+    if ((a+b>c)&&(a+c>b)&&(b+c>a))
+       i = 1;
+    else
+       i = 0;
+
+    if (i == 1)
+        cout << "This is a Triangle." << endl;
+    else
+        cout << "This isn't a Triangle." << endl;
+    return 0;
+    cout << endl;
+}
+double Right_Triangle(double a, double b, double c)
+{
+    bool j = 0;
+    if ((a * a == b * b + c * c) || (b * b == a * a + c * c) || (c * c == a * a + b * b))
+        j = 1;
+    else
+        j = 0;
+
+    if (j == 1)
+        cout << "\nThis is a Right Triangle." << endl;
+    else
+        cout << "\nThis isn't a Right Triangle." << endl;
+    return 0;
+    cout << endl;
+}
