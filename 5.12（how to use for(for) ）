@@ -1,0 +1,52 @@
+// 5.12（how to use for(for) ）.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	for (int i = 1; i <= 10; i++)
+	{
+		for (int j = 1; j <= i; j++)
+		{
+			cout << "*";
+		}
+		cout << endl;
+	}                 /* i=1,判断i<=10成立，执行循环1:j=1,1<=1成立，输出1个*，j++,j=2,此时2<=1不成立，跳出循环2，换行
+					  i++,i=2,判断2<=10成立，执行循环1：j=1，1<=2成立，输出1个*，j++,j=2,2<=2成立,输出1个*，j++,j=3,3<=2不成立，跳出循环2，换行 */
+	cout << endl;
+	for (int i = 1; i <= 10; i++)
+	{
+		for (int j = 10; j >= i; j--)
+		{
+			cout << "*";
+		}
+		cout << endl;
+	}
+	cout << endl;
+	for (int i = 10; i >= 1; i--)
+	{
+		for (int space = 10; space > i; space--)
+		{
+			cout << " ";
+		}
+		for (int j = 1; j <= i; j++)
+		{
+			cout << "*";
+		}
+		cout << endl;
+	}
+	cout << endl;
+	for (int i = 10; i >= 1; i--)
+	{
+		for (int space = 1; space < i; space++)
+		{
+			cout << " ";
+		}
+		for (int j = 10; j >= i; j--)
+		{
+			cout << "*";
+		}
+		cout << endl;
+	}
+}
