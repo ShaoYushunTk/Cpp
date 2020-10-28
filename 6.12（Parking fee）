@@ -1,0 +1,46 @@
+// 6.12（Parking fee）.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//输入3辆车停车时间，计算费用并输出（小于3小时2元，大于3小时每增加1小时或不到1小时附加0.5元，24小时内最多10元）
+
+#include<iostream>
+#include<iomanip>
+#include <cmath>
+using namespace std;
+
+double calculateCharges(double);
+int main()
+{
+	double hours = 0, Totalhours = 0, TotalCharge = 0;
+	for (int i = 1; i <= 3; i++)
+	{
+		cin >> hours;
+		
+		if (i == 1)
+		{
+			cout << endl;
+			cout << "Car" << "	" << "Hours" << "	" << "Charges" << endl;
+		}
+		cout << i << "	" << setprecision(3) << hours << "	" << setprecision(4) << calculateCharges(hours) << endl;    //设置精度
+
+		Totalhours += hours;
+		TotalCharge += calculateCharges(hours);
+	}
+
+	cout << "Total" << "	" << setprecision(3) << Totalhours << "	" << setprecision(4) << TotalCharge;      //设置精度，控制输出Totalhours保留小数后1位，TotalCharge保留小数后2位	
+}
+double calculateCharges(double Hours)
+{
+	double Charge;
+	if (Hours <= 3.0)
+	{
+		Charge = 2.00;
+	}
+	else if (Hours > 3.0 && Hours < 24.0)
+	{
+		Charge = 2.00 + ceil(Hours - 3) * 0.50;
+	}
+	else
+	{
+		Charge = 10.00;
+	}
+	return Charge;
+}
