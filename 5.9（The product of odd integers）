@@ -1,0 +1,16 @@
+// 5.9（The product of odd integers）.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//输出1到15的奇数相乘的积
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int sum = 1;
+	for (int i = 1; i <= 15; i += 2)
+	{
+		sum *= i;
+	}
+	cout << sum << endl;
+}
+
