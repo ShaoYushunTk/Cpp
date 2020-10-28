@@ -1,0 +1,89 @@
+// 6.4chapter(create Gradebook,cin grades,cout gradeReport).cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//
+
+#include<iostream>
+#include<string>
+using namespace std;
+
+class Gradebook
+{
+public:
+	explicit Gradebook(string);
+	void setCourseName(string);
+	string getCourseName() const;
+	void displayMessage() const;
+	void inputGrades();
+	void displayGradeReport() const;
+	int maximum(int, int, int) const;
+private:
+	string courseName;
+	int maximumGrade;
+};
+
+Gradebook::Gradebook(string name) :maximumGrade(0)
+{
+	setCourseName(name);
+}
+void Gradebook::setCourseName(string name)
+{
+	if (name.size() <= 25)              //当形参name字符数小于25，赋值给courseName
+		courseName = name;
+	else                                //大于25，name调用函数substr,截取从0开始25个字符
+	{
+		courseName = name.substr(0, 25);                 
+		cerr << "Name: " << name << "exceeds maximum length(25)\n"
+			<< "Limiting your courseName to first 25 characters." << endl;
+	}
+}
+string Gradebook::getCourseName()const      //当调用getCourseName函数时返回courseName
+{
+	return courseName;
+}
+void Gradebook::displayMessage()const         //使用displayMessage调用getCourName函数
+{
+	cout << "Welcome to Gradebook for " << getCourseName() << "!" << endl;
+}
+void Gradebook::inputGrades()      
+{
+	int grade1 = 0;
+	int grade2 = 0;
+	int grade3 = 0;
+
+	cout << "Enter 3 grades:";
+	cin >> grade1 >> grade2 >> grade3;
+	maximumGrade = maximum(grade1, grade2, grade3);      //调用maximum函数，将grade1(实参)赋值给形参x
+}
+int Gradebook::maximum(int x, int y, int z) const         //maximum函数（包含3个形参）
+{
+	int intermediate_variable = x;
+	if (y > intermediate_variable)
+		intermediate_variable = y;
+	if (z > intermediate_variable)
+		intermediate_variable = z;
+	return intermediate_variable;
+}
+void Gradebook::displayGradeReport() const
+{
+	cout << "The maximum of grades is:" << maximumGrade << endl;
+}
+int main()
+{
+	Gradebook myGradebook("A1202 Cpp programing");
+
+	myGradebook.displayMessage();
+	myGradebook.inputGrades();
+	myGradebook.displayGradeReport();
+}
+
+/*snbstr函数使用
+1.substr(x)    
+x为开始位置，表示从开始位置截取至最后
+2.sunstr(x,y)
+x为开始位置，y为截取长度，表示从开始位置截取长度为y的字符
+
+cout:标准输出流，开辟缓冲区存放流中数据，当插入一个endl，不论缓冲区是否满了，都立即在显示器输出流中所有数据并换行
+endl:换行并清空缓冲区
+cerr:标准错误流，不经缓冲区，直接显示器输出
+clog:标准错误流，经缓冲区，当缓冲区满或遇到endl，才在显示器输出
+
+*/
