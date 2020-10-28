@@ -1,0 +1,25 @@
+// 5.6（cin integers and cout the Average).cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//输入整数，遇到9999停止并输出平均值
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	double number = 0;
+	double sum = 0;
+	double Average = 0;
+	int i = 0;
+
+	do
+	{
+		cin >> number;
+		i++;
+		sum += number;
+	} while (number != 9999);
+
+	sum -= 9999;
+	i -= 1;
+	Average = sum / i;
+	cout << "The Average is: " << Average << endl;
+}
