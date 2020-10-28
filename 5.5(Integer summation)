@@ -1,0 +1,22 @@
+// 5.5(Integer summation).cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//输入第一个数确定继续输入值的个数，求得继续输入值的和并打印
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int counter = 0;
+    int number = 0;
+
+    int sum = 0;
+    cout << "Enter The number of digits: ";
+    cin >> counter;
+    for (int i = 1; i <= counter; i++)
+    {
+        cout << "Enter the number: ";
+        cin >> number;
+        sum += number;
+    }
+    cout << "The sum is: " << sum << endl;
+}
