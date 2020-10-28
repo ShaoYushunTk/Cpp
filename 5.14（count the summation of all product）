@@ -1,0 +1,48 @@
+// 5.14（count the summation of all product）.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//输入产品编号和销售量，根据单价计算并打印售出产品的总零售额
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int number = 0;
+	double sales = 0;
+	double Product1_sales = 0;
+	double Product2_sales = 0;
+	double Product3_sales = 0;
+	double Product4_sales = 0;
+	double Product5_sales = 0;
+	double sum = 0;
+
+	for (int counter = 1; counter <= 5; counter++)
+	{
+		cout << "Enter number: ";
+		cin >> number;
+		cout << "Enter sales: ";
+		cin >> sales;
+		cout << endl;
+		switch (number)
+		{
+		case 1:
+			Product1_sales = sales * 2.98;
+			break;
+		case 2:
+			Product2_sales = sales * 4.50;
+			break;
+		case 3:
+			Product3_sales = sales * 9.98;
+			break;
+		case 4:
+			Product4_sales = sales * 4.49;
+			break;
+		case 5:
+			Product5_sales = sales * 6.87;
+			break;
+		default:
+			break;
+		}
+	}
+	sum = Product1_sales + Product2_sales + Product3_sales + Product4_sales + Product5_sales;
+	cout << "the sum of All Product is: " << sum << endl;
+}
