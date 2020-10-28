@@ -1,0 +1,25 @@
+// 5.20（The Pythagorean triplet）.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//找出500以内的所有直角三角形（边长均为整数）并打印。（类比之前的“百钱买百鸡”）
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	for (int side1 = 1; side1 <= 500; side1++)
+	{
+		for (int side2 = 1; side2 <= 500; side2++)
+		{
+			for (int hypotenuse = 1; hypotenuse <= 500; hypotenuse++)    //hypotenuse斜边
+			{
+				if ((hypotenuse * hypotenuse == side1 * side1 + side2 * side2) && (side1 < side2))
+				{
+					cout << "side1=" << side1 << endl
+						<< "side2=" << side2 << endl
+						<< "hypotenuse=" << hypotenuse << endl;
+					cout << endl;
+				}
+			}
+		}
+	}
+}
