@@ -1,0 +1,20 @@
+// 5.19（Estimate the Pi）.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//估算圆周率Pi
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	unsigned int number = 0;
+	double sum = 4;
+	cout << "Enter a number to estimate the Pi: ";
+	cin >> number;
+	for (int i = 1; i <= number; i++)
+	{
+		if (i % 2 == 1)
+			sum += (-4.0 / (2.0 * i + 1.0));
+		if (i % 2 == 0)
+			sum += (4.0 / (2.0 * i + 1.0));
+	}
+	printf("%.20lf\n", sum);                  //输出小数点后20位
+}
