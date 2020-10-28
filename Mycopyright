@@ -1,0 +1,10 @@
+// Mycopyright.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	char a[] = { 70,82,79,77,58,83,104,97,111,32,89,117,115,104,117,110,0 };
+	cout << a << endl;
+}
