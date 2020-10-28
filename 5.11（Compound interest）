@@ -1,0 +1,127 @@
+// 5.11（Compound interest）.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//5.4chapter：本金1000，年利率可修改，计算10年内复利
+
+//函数版本，后附for版本
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+double rate_5(double rate);
+double rate_6(double rate);
+double rate_7(double rate);
+double rate_8(double rate);
+double rate_9(double rate);
+double rate_10(double rate);
+int main()
+{
+	cout << "Year" << "	" << "Amount on deposit" << endl;
+	double rate = 0;
+	rate_5(rate);
+	cout << endl;
+	rate_6(rate);
+	cout << endl;
+	rate_7(rate);
+	cout << endl;
+	rate_8(rate);
+	cout << endl;
+	rate_9(rate);
+	cout << endl;
+	rate_10(rate);
+}
+double rate_5(double rate)
+{
+	for (int year = 1; year <= 10; year++)
+	{
+		double amount;
+		double principle = 1000;
+		double rate5 = 0.05;
+		amount = principle * pow(1.0 + rate5, year);
+		cout << year << "	" << amount << endl;
+	}
+	return 0;
+}
+double rate_6(double rate)
+{
+	for (int year = 1; year <= 10; year++)
+	{
+		double amount;
+		double principle = 1000;
+		double rate6 = 0.06;
+		amount = principle * pow(1.0 + rate6, year);
+		cout << year << "	" << amount << endl;
+	}
+	return 0;
+}
+double rate_7(double rate)
+{
+	for (int year = 1; year <= 10; year++)
+	{
+		double amount;
+		double principle = 1000;
+		double rate7 = 0.07;
+		amount = principle * pow(1.0 + rate7, year);
+		cout << year << "	" << amount << endl;
+	}
+	return 0;
+}
+double rate_8(double rate)
+{
+	for (int year = 1; year <= 10; year++)
+	{
+		double amount;
+		double principle = 1000;
+		double rate8 = 0.08;
+		amount = principle * pow(1.0 + rate8, year);
+		cout << year << "	" << amount << endl;
+	}
+	return 0;
+}
+double rate_9(double rate)
+{
+	for (int year = 1; year <= 10; year++)
+	{
+		double amount;
+		double principle = 1000;
+		double rate9 = 0.09;
+		amount = principle * pow(1.0 + rate9, year);
+		cout << year << "	" << amount << endl;
+	}
+	return 0;
+}
+double rate_10(double rate)
+{
+	for (int year = 1; year <= 10; year++)
+	{
+		double amount;
+		double principle = 1000;
+		double rate10 = 0.10;
+		amount = principle * pow(1.0 + rate10, year);
+		cout << year << "	" << amount << endl;
+	}
+	return 0;
+}
+
+//
+/*
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+int main()
+{
+	double amount;
+	double principle = 1000.00;
+
+	cout << "Year" << "	" << "Amount on deposit" << endl;
+
+	for (double rate = 0.05; rate <= 0.10; rate += 0.01)
+	{
+		for (int year = 1; year <= 10; year++)
+		{
+			amount = principle * pow(1.00 + rate, year);
+			cout << year << "	" << amount << endl;
+		}
+		cout << endl;
+	}
+}
+*/
