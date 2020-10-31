@@ -1,0 +1,30 @@
+// 6.18（Exponentiation without cmath）.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//创建函数integerPower(base,exponent)，返回base的exponent次方
+//幂计算的迭代版本
+
+#include<iostream>
+using namespace std;
+
+int integerPower(int base, int exponent);
+int main()
+{
+	int base = 0, exponent = 0;
+	cout << "Enter the base: ";
+	cin >> base;
+	cout << "Enter the exponent: ";
+	cin >> exponent;
+	integerPower(base, exponent);
+}
+int integerPower(int base, int exponent)
+{
+	int intermediate_variable = 0;
+	intermediate_variable = base;
+	for (int i = 1; i < exponent; i++)
+	{
+		base *= intermediate_variable;
+	}
+	cout << endl;
+	cout << "The result is: " << base;
+	cout << endl;
+	return 0;
+}
