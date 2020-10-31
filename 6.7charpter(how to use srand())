@@ -1,0 +1,24 @@
+// 6.7charpter(how to use srand()).cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//使用srand函数向随机数生成器提供种子，种子不同生成的随机数不同
+
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+
+int main()
+{
+	for (int i = 1; i < 4; i++)
+	{
+		unsigned seed = 0;
+		cout << "Enter seed: ";
+		cin >> seed;
+		srand(seed);                               //提供3次种子。
+		for (int j = 1; j <= 10; j++)
+		{
+			cout << "	" << (1 + rand() % 6);
+			if (j % 5 == 0)
+				cout << endl;
+		}
+		cout << endl;
+	}
+}
