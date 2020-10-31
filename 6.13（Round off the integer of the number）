@@ -1,0 +1,27 @@
+// 6.13（Round off the integer of the number）.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//  y=floor(x+0.5)  将数字x舍入到最接近它的整数并且把结果赋值给y
+//输入几个数，输出最接近它们的整数
+
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+
+int Integer_rounding(int i, double x, int y);
+int main()
+{
+	int i = 0, y = 0;
+	double x = 0;
+	cout << "Enter the number of a few Numbers: ";
+	cin >> i;
+	Integer_rounding(i, x, y);
+}
+int Integer_rounding(int i, double x, int y)
+{
+	for (int j = 1; j <= i; j++)
+	{
+		cin >> x;
+		y = floor(x + 0.5);
+		cout << y << "	";
+	}
+	return 0;
+}
