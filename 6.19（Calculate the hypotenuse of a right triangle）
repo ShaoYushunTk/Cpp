@@ -1,0 +1,33 @@
+// 6.19（Calculate the hypotenuse of a right triangle）.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//输入三角形的2条边，计算并输出斜边
+
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+double hypotenuse(double, double);
+int main()
+{
+	double size_1 = 0, size_2 = 0;
+	hypotenuse(size_1, size_2);
+}
+double hypotenuse(double size_1, double size_2)
+{
+	int counter = 0;
+	double hypotenuse = 0;
+	cout << "Enter the number of triangle: ";
+	cin >> counter;
+
+	for (int i = 1; i <= counter; i++)
+	{
+		if (i == 1)
+		{
+			cout << "Triangle" << "\t" << "size_1" << "	" << "size_2" << "	" << "hypotenuse" << endl;
+		}
+		cin >> size_1 >> size_2;
+		hypotenuse = sqrt(size_1 * size_1 + size_2 * size_2);
+		cout << i << "		" << size_1 << "	" << size_2 << "	" << hypotenuse << endl;
+
+	}
+	return 0;
+}
