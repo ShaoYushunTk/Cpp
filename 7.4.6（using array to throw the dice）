@@ -1,0 +1,23 @@
+// 7.4.6（using array to throw the dice）.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//
+
+#include<iostream>
+#include<ctime>
+#include<cstdlib>
+#include<array>
+using namespace std;
+
+int main()
+{
+	const int arraysize = 7;      //const 可使变量声明为常量变量，使用const使一定要先给变量赋值，否则出错
+	srand(time(NULL));
+	array<int, arraysize>Frequency = {};         //创建一个整型的，大小为arraysize，名字是Frequency的初始化数组，下标从0开始
+	for (int i = 1; i <= 6000000; i++)
+	{
+		Frequency[1 + rand() % 6]++;               //投掷骰子，出来1,Frequency[1]++,即数组下标为1的元素加1
+	}
+	for (int j = 1; j < Frequency.size(); j++)
+	{
+		cout << j << "	" << Frequency[j] << endl;    //遍历数组
+	}
+}
