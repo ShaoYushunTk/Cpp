@@ -1,0 +1,64 @@
+// 6.57（using Artificial Intelligence to help calculate multiplication）.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//计算机辅助教学1.0，帮助小学生学习乘法
+
+
+#include<iostream>
+#include<ctime>
+#include<cstdlib>
+using namespace std;
+
+int Multiplication(int, int, int);
+int Multiplication(int a, int b, int answer)
+{
+	int result = a * b;
+	if (answer == result)          //验证结果是否正确
+	{
+		cout << "Very good." << endl
+			<< "Do you want to play again(y or n) ?" << endl;
+	}
+	else                           //若所求的答案错误，重复计算直到正确为止
+	{
+		int Answer = 0;
+		cout << "No try again." << endl;
+		cin >> Answer;
+		while (Answer != result)           
+		{
+			cout << "No try again." << endl;
+			cin >> Answer;
+		}
+		cout << "Very good." << endl
+			<< "Do you want to play again(y or n) ?" << endl;
+	}
+	a = 0;
+	b = 0;
+	result = 0;
+	char response = ' ';
+	cin >> response;             //判断是否继续答题
+	if (response == 'y')
+	{
+		a = 1 + rand() % 9;
+		b = 1 + rand() % 9;
+		cout << "How much is " << a << " times " << b << " ?" << endl;
+		cout << "Enter your answer: ";
+		cin >> answer;
+		Multiplication(a, b, answer);            //如果是，递归
+	}
+	else                                         //否，推出
+		return 0;
+}
+
+int main()
+{
+
+	int a = 0;
+	int b = 0;
+	int answer = 0;
+
+	srand(time(NULL));
+	a = 1 + rand() % 9;              //随机产生个位数
+	b = 1 + rand() % 9;
+	cout << "How much is " << a << " times " << b << " ?" << endl;
+	cout << "Enter your answer: ";
+	cin >> answer;
+	Multiplication(a, b, answer);      //调用函数
+}
