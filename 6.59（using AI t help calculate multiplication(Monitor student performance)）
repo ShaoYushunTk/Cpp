@@ -1,0 +1,92 @@
+// 6.59（using AI t help calculate multiplication(Monitor student performance)）.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//计算机辅助教学3.0，新增“统计学生回答正确和错误的次数”功能
+
+#include<iostream>
+#include<ctime>
+#include<cstdlib>
+#include<string>
+#include<array>
+using namespace std;
+
+int Multiplication(int, int, int);
+int Multiplication(int a, int b, int answer)
+{
+	static int CorrectTimes = 0;            //将计数器的值定义为静态变量，这样在递归时便不会重复初始化使得无法计数
+	static int WrongTimes = 0;
+	static int counter = 1;
+
+	string CorrectEvaluation[4] = { "Very good!","Excellent!","Nice work!","Keep up the good work!" };
+	string WrongEvaluation[4] = { "No. Please try again.","Wrong. Try once more.","Don't give up!","No. Keep trying!" };
+
+	int result = a * b;
+	if (answer == result)
+	{
+		cout << CorrectEvaluation[rand() % 4] << endl
+			<< "Do you want to play again(y or n) ?" << endl;
+		CorrectTimes++;
+	}
+	else
+	{
+		WrongTimes++;
+		int Answer = 0;
+		cout << WrongEvaluation[rand() % 4] << endl;
+		cin >> Answer;
+		while (Answer != result)
+		{
+			cout << WrongEvaluation[rand() % 4] << endl;
+			cin >> Answer;
+		}
+		cout << CorrectEvaluation[rand() % 4] << endl
+			<< "Do you want to play again(y or n) ?" << endl;
+	}
+	a = 0;
+	b = 0;
+	result = 0;
+
+	char response = ' ';
+	cin >> response;
+
+	if (response == 'y')
+	{
+		counter++;
+		a = 1 + rand() % 9;
+		b = 1 + rand() % 9;
+		cout << "How much is " << a << " times " << b << " ?" << endl;
+		cout << "Enter your answer: ";
+		cin >> answer;
+		if (counter == 10)
+		{
+			if (CorrectTimes >= 8)
+			{
+				cout << "Congratulations, you are ready to go to the next level!" << endl;
+				return 0;
+			}
+			else
+			{
+				cout << "Please ask your teacher for extra help." << endl;
+				return 0;
+			}
+		}
+		Multiplication(a, b, answer);
+
+	}
+	else
+		return 0;
+
+}
+
+int main()
+{
+
+	int a = 0;
+	int b = 0;
+	int answer = 0;
+
+	srand(time(NULL));
+	a = 1 + rand() % 9;
+	b = 1 + rand() % 9;
+	cout << "How much is " << a << " times " << b << " ?" << endl;
+	cout << "Enter your answer: ";
+	cin >> answer;
+	Multiplication(a, b, answer);
+}
