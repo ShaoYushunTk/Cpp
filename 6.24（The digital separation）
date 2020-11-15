@@ -1,0 +1,81 @@
+// 6.24（The digital separation）.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//计算整数a除以整数b的商的整数部分；
+//计算整数a除以整数b的整数余数；
+//编写函数，输入1到32767之间的整数，将其数字分离.如4396分离成4  3  9  6 
+
+#include<iostream>
+#include<cstdlib>
+#include<cmath>
+#include<ctime>
+using namespace std;
+
+int Rand(int);
+int DigitalSeparation(int, int);
+int main()
+{
+	int rand1 = 0;
+	int a = 0, b = 0;
+	cout << "Enter 2 numbers: ";
+	cin >> a >> b;
+	DigitalSeparation(a, b);
+	Rand(rand1);
+}
+int Rand(int rand1)
+{
+	srand(time(NULL));
+	rand1 = rand();
+	cout << rand1 << endl;
+	if (1 <= rand1 && rand1 < 10)
+	{
+		cout << rand1 << endl;
+	}
+	else if (10 <= rand1 && rand1 < 100)
+	{
+		int Shiwei = rand1 / 10;
+		int Gewei = rand1 % 10;
+		cout << Shiwei << "	" << Gewei << endl;
+	}
+	else if (100 <= rand1 && rand1 < 1000)
+	{
+		int BaiweI = rand1 / 100;
+		int Houliangwei = rand1 % 100;
+		int ShiWeI = Houliangwei / 10;
+		int GeWeI = Houliangwei % 10;
+		cout << BaiweI << "	" << ShiWeI << "	" << GeWeI << endl;
+	}
+	else if (1000 <= rand1 && rand1 < 10000)
+	{
+		int Qianwei = rand1 / 1000;
+		int Housanwei = rand1 % 1000;
+		int BaiWei = Housanwei / 100;
+		int HouLiangwei = Housanwei % 100;
+		int SHiwei = HouLiangwei / 10;
+		int GEwei = HouLiangwei % 10;
+		cout << Qianwei << "	" << BaiWei << "	" << SHiwei << "	" << GEwei << endl;
+	}
+	else if (10000 <= rand1 && rand1 < 100000)
+	{
+		int Wanwei = rand1 / 10000;
+		int Housiwei = rand1 % 10000;
+		int QIanwei = Housiwei / 1000;
+		int HOusanwei = Housiwei % 1000;
+		int BAiwei = HOusanwei / 100;
+		int HOuliangwei = HOusanwei % 100;
+		int SHIwei = HOuliangwei / 10;
+		int GEWei = HOuliangwei % 10;
+		cout << Wanwei << "\t" << QIanwei << "\t" << BAiwei << "\t" << SHIwei << "\t" << GEWei << endl;
+	}
+	else
+	{
+		cout << "Wrong!";
+	}
+
+	return 0;
+}
+int DigitalSeparation(int a, int b)
+{
+	int c = a / b;
+	int d = a % b;
+	cout << c << endl << d << endl;
+	return 0;
+}
