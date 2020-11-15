@@ -1,0 +1,410 @@
+// Exercise1.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//1.编写一个模拟掷骰子的程序，连续掷1000次，统计各点数出现的次数，并计算其出现的概率。
+
+#include<iostream>
+#include<cstdlib>
+#include<ctime>
+#include<array>
+using namespace std;
+
+int main()
+{
+	srand(time(NULL));
+
+	int counter[6] = { 0,0,0,0,0,0 };
+	int number[6] = { 1,2,3,4,5,6 };
+	int a = 0;
+
+	for (int i = 1; i <= 1000; i++)
+	{
+		a = 1 + rand() % 6;
+		for (int k = 0; k < 6; k++)
+		{
+			if (a == number[k])
+			{
+				counter[k]++;
+			}
+		}
+	}
+
+	for (int j = 0; j < 6; j++)
+	{
+		double b = counter[j];
+
+		cout << j + 1 << "的次数为： " << counter[j] << endl
+			<< j + 1 << "的概率为： " << b / 1000 << endl;
+	}
+}
+
+
+// Exercise2.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+/*
+2.	Daphne以10%的单利投资了100美元，也就是说，每年的利润都是投资额的10%，即
+利息 = 0.10 × 原始存款
+而Cleo以5%的复利投资了100美元，也就是说，利息是当前存款(包括获得的利息)的5%，即：
+利息 = 0.05 × 当前存款
+请编写一个程序，计算多少年后，Cleo的投资价值才能超过Daphne的投资价值，并显示此时两人的投资价值。
+*/
+//单利，P=（1+nr）
+//复利，P=(1+r)^n
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	double money = 100;
+    double totalD = 100;
+	double totalC = 100;
+
+	for (int years = 1; years < 100; years++)
+	{
+		totalD += 1 * (money * 0.10);
+		totalC *= (1 + 0.05);
+		if (totalC > totalD)
+		{
+			cout << years << " 年后，Cleo的投资价值才能超过Daphne的投资价值。" << endl
+				<< "Cleo的投资价值: " << totalC << endl
+				<< "Daphne的投资价值: " << totalD << endl;
+				
+			break;
+		}
+	}
+
+}
+
+
+// Exercise3.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+/*
+
+3.	函数int gcd(int m, int n)用于计算两个正整数的最大公约数；
+函数int lcm(int m, int n)用于计算两个正整数的最小公倍数。
+在main()函数中接收用户输入的两个数，并调用上述两个函数分别计算其最大公约数和最小公倍数，并输出。
+
+*/
+
+#include<iostream>
+using namespace std;
+
+int gcd(int m, int n);
+int gcd(int m, int n)
+{
+	if (m < n)     //将大的数作为m,若m<n，交换2个数
+	{
+		int a = 0;
+		a = n;
+		n = m;
+		m = a;
+	}
+
+	int temp = 0;
+	while (n != 0)   //辗转相除法
+	{
+		temp = m % n;
+		m = n;
+		n = temp;
+	}
+	
+	return m;
+}
+int lcm(int a, int b);
+int lcm(int a, int b)
+{
+	if (a < b)
+	{
+		int temp = 0;
+		temp = a;
+		a = b;
+		b = temp;
+	}
+	int c = gcd(a, b);
+	int Temp = a * b;
+	return Temp / c;
+}
+int main()
+{
+	int a = 0, b = 0;
+	cout << "Enter 2 numbers: ";
+	cin >> a >> b;
+	cout << a<<" 和 "<<b<<" 的最大公约数为： "<<gcd(a, b) << endl
+		<< a << " 和 " << b << " 的最小公倍数为： "<<lcm(a, b);
+	
+}
+
+
+// Exercise4.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+/*
+4.	回文数是指从左向右读和从右向左读都一样的数，例如：12321，4554等。
+    编写一个函数用于判断回文数，并返回一个bool类型值。
+    在main()函数中接收用户输入的正整数，然后调用该函数进行判断是否为回文数。
+	（注，不能使用数组和字符串）
+*/
+
+#include<iostream>
+using namespace std;
+
+bool huiwenshu(int a);
+bool huiwenshu(int a)
+{
+	int n = a;
+	int newed = 0;
+	while (n > 0)    //逆向打印数字
+	{
+		newed = newed * 10 + n % 10;
+		n = n / 10;
+	}
+	return a == newed;
+}
+int main()
+{
+	int number = 0;
+	cout << "Enter a number: ";
+	cin >> number;
+
+	if (huiwenshu(number))   
+		cout << "Yes.";
+	else
+		cout << "No.";
+
+}
+
+
+// Exercise5.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+/*
+
+5.	创建函数park(bool isPack)，用于记录停车场停车位数量，每次进出一辆车则执行此方法，
+	若进车则参数isPack为true，否则参数为false。停车场共有30个停车位，
+	进入六辆车出了两辆车之后，停车场还剩多少停车位。
+	注，不能使用全局变量。
+
+*/
+
+
+#include<iostream>
+using namespace std;
+
+int park(bool isPack);
+int park(bool isPack)
+{
+	static int ParkNumber = 30;
+
+	if (isPack == 1)
+		ParkNumber--;
+	else
+		ParkNumber++;
+
+	return ParkNumber;
+}
+int main()
+{
+	for (int i = 1; i <= 6; i++)
+	{
+		park(1);
+	}
+	for (int j = 1; j < 2; j++)
+	{
+		park(0);
+	}
+	cout << "停车场还剩" << park(0) << "个停车位。" << endl;
+}
+
+
+
+// Exercise6.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+/*
+* 
+6.	函数getYesterday(int year, int month, int day)用于计算某天的前一天，并输出；
+	函数isDate(int year, int month, int day)用于判别用户输入的日期是否合法，返回值为bool类型；
+	函数isLeapYear(int year)用于判断是否为闰年，返回值为bool类型。
+	在main()函数中接收用户输入的日期，首先调用isDate函数进行判断，
+	若合法再调用GetYesterday函数进行计算，若不合法提示用户重新输入。
+
+*/
+
+#include<iostream>
+using namespace std;
+
+bool isLeapYear(int year);
+bool isLeapYear(int year)
+{
+	if (year % 100 != 0)
+	{
+		if (year % 4 == 0)
+			return true;
+		else
+			return false;
+	}
+	else if (year % 400 == 0)
+		return true;
+	else
+		return false;
+}
+bool isDate(int year, int month, int day);
+bool isDate(int year, int month, int day)
+{
+	bool jyear = 0, jmonth = 0, jday = 0;
+	if (year <= 0)
+		jyear = 0;
+	else
+		jyear = 1;
+	if (month <= 0 || month > 12)
+		jmonth = 0;
+	else
+		jmonth = 1;
+	if (month == 4 || month == 6 || month == 9 || month == 11)
+	{
+		if (day >= 1 && day <= 30)
+			jday = 1;
+		else
+			jday = 0;
+	}
+	if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
+	{
+		if (day >= 1 && day <= 31)
+			jday = 1;
+		else
+			jday = 0;
+	}
+	if (month == 2)
+	{
+		if (isLeapYear(year))
+		{
+			if (day >= 1 && day <= 29)
+				jday = 1;
+			else
+				jday = 0;
+		}
+		else
+		{
+			if (day >= 1 && day <= 28)
+				jday = 1;
+			else
+				jday = 0;
+		}
+	}
+	if (jyear == 1 && jmonth == 1 && jday == 1)
+		return true;
+	else
+		return false;
+
+}
+
+int DisplayDate(int year, int month, int day);
+int DisplayDate(int year, int month, int day)
+{
+	cout <<year << " 年 " << month << " 月 " << day << " 日 " << endl;
+	return 0;
+}
+int Month(int year, int month);
+int Month(int year, int month)
+{
+	switch (month)
+	{
+	case 1:
+		DisplayDate(year - 1, 12, 31);
+		break;
+	case 2:
+		DisplayDate(year, month - 1, 31);
+		break;
+	case 3:
+		DisplayDate(year, month - 1, 28);
+	case 4:
+		DisplayDate(year, month - 1, 31);
+		break;
+	case 5:
+		DisplayDate(year, month - 1, 30);
+		break;
+	case 6:
+		DisplayDate(year, month - 1, 31);
+		break;
+	case 7:
+		DisplayDate(year, month - 1, 30);
+		break;
+	case 8:
+		DisplayDate(year, month - 1, 30);
+		break;
+	case 9:
+		DisplayDate(year, month - 1, 31);
+		break;
+	case 10:
+		DisplayDate(year, month - 1, 30);
+		break;
+	case 11:
+		DisplayDate(year, month - 1, 31);
+		break;
+	case 12:
+		DisplayDate(year, month - 1, 30);
+		break;
+	default:
+		cout << "Wrong!";
+		break;
+	}
+	return 0;
+}
+int GetYesterday(int year,int month,int day);
+int GetYesterday(int year,int month,int day)
+{
+	if (isLeapYear(year))    //考虑是否闰年
+	{
+		if (day>1&&month>1)    
+		{
+			DisplayDate(year, month, day - 1);
+		}
+		if (day == 1)    
+		{
+			Month(year, month);
+		}
+	}
+	else
+	{
+		if (day > 1 && month > 1)
+		{
+			DisplayDate(year, month, day - 1);
+		}
+		if (day == 1)
+		{
+			Month(year, month);
+		}
+	}
+	return 0;
+}
+
+int main()
+{
+	int year = 0, month = 0, day = 0;
+	cout << "Enter the date: ";
+	cin >> year >> month >> day;
+
+	if (isDate(year, month, day))
+		cout << "Legal." << endl;
+	else
+	{
+		cout << "Illegal."<<endl
+			<< "Please Enter again.";
+		cin >> year >> month >> day;
+		while (isDate(year, month, day)!=1)
+		{
+			cout << "Illegal."<<endl
+				<< "Please Enter again.";
+			cin >> year >> month >> day;			
+			isDate(year, month, day);
+		}
+		cout << "Legal." << endl;
+	}
+
+	cout << "The date is: ";
+	DisplayDate( year,  month, day);
+
+	if (isLeapYear(year))
+	{
+		cout << year << "是闰年" << endl;
+	}
+	else
+		cout << year << "不是闰年" << endl;
+
+	cout << "The date of yesterday is: ";
+	GetYesterday(year, month, day);
+
+}
+
+
