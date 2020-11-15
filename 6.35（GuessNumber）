@@ -1,0 +1,68 @@
+// 6.35（GuessNumber）.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//程序随机给出一个1到1000的数，用户通过输入数字来猜出数字的值，超过10次游戏判负
+
+#include<iostream>
+#include<cstdlib>
+#include<ctime>
+using namespace std;
+
+int GuessNumber();
+int main()
+{
+	GuessNumber();
+}
+int GuessNumber()
+{
+	srand(time(NULL));
+	int Number = 1 + rand() % 1000;
+	int counter = 1;
+
+	cout << "I have a number between 1 and 1000." << endl
+		<< "Can you guess my number?" << endl
+		<< "Please type your first guess." << endl;
+
+	int PlayerGuessNumber = 0;
+	cin >> PlayerGuessNumber;
+	while (PlayerGuessNumber != Number)
+	{
+		if (PlayerGuessNumber > Number)
+		{
+			cout << "Too high.Try again." << endl;
+			int IntermediateVariable = 0;
+			cin >> IntermediateVariable;
+			PlayerGuessNumber = IntermediateVariable;
+		}
+
+		if (PlayerGuessNumber < Number)
+		{
+			cout << "Too low.Try again." << endl;
+			int IntermediateVariablE = 0;
+			cin >> IntermediateVariablE;
+			PlayerGuessNumber = IntermediateVariablE;
+		}
+		
+		counter++;
+		
+	}
+	cout << "Excellent! You guessed the number!" << endl;
+
+	if (counter<=10)
+	{
+		cout << "Ahah! You know the secret!" << endl;
+	}
+	if (counter>10)
+	{
+		cout << "You should be able to do better!" << endl;
+	}
+
+    cout<< "Woule you like to play again(y or n)?" << endl;
+	char choice = ' ';
+	cin >> choice;
+
+	if (choice == 'y')
+		GuessNumber();
+	if (choice == 'n')
+		cout << "Thank you." << endl;
+
+	return 0;
+}
