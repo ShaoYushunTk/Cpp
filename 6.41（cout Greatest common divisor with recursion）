@@ -1,0 +1,39 @@
+// 6.41（cout Greatest common divisor with recursion）.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//寻找最大公约数的递归版本，对比6.31
+
+#include<iostream>
+#include<cstdlib>
+#include<ctime>
+using namespace std;
+
+int gcd(int, int);
+int gcd(int x, int y)
+{
+	if (y == 0)
+	{
+		return x;
+	}
+	else
+	{
+		if (x > y)
+		{
+			return gcd(y, x % y);
+		}
+		else
+		{
+			int a = 0;
+			a = y;
+			y = x;
+			x = a;
+			return gcd(y, x % y);
+		}
+	}
+}
+
+int main()
+{
+	int x = 0, y = 0;
+	cout << "Enter 2 numbers: ";
+	cin >> x >> y;
+	cout << gcd(x, y);
+}
