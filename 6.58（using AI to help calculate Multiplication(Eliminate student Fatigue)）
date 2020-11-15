@@ -1,0 +1,70 @@
+// 6.58（using AI to help calculate Multiplication(Eliminate student Fatigue)）.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//计算机辅助教学2.0，新增“针对正确或不正确的答案，打印不同的评语”功能
+
+#include<iostream>
+#include<ctime>
+#include<cstdlib>
+#include<string>
+#include<array>
+using namespace std;
+
+int Multiplication(int, int, int);
+int Multiplication(int a, int b, int answer)
+{
+	string CorrectEvaluation[4] = { "Very good!","Excellent!","Nice work!","Keep up the good work!" };         //创建数组
+	string WrongEvaluation[4] = { "No. Please try again.","Wrong. Try once more.","Don't give up!","No. Keep trying!" };
+
+	int result = a * b;
+	if (answer == result)
+	{
+		cout << CorrectEvaluation[rand() % 4] << endl           
+			<< "Do you want to play again(y or n) ?" << endl;
+	}
+	else
+	{
+		int Answer = 0;
+		cout << "No try again." << endl;
+		cin >> Answer;
+		while (Answer != result)
+		{
+			cout << WrongEvaluation[rand() % 4] << endl;
+			cin >> Answer;
+		}
+		cout << CorrectEvaluation[rand() % 4] << endl
+			<< "Do you want to play again(y or n) ?" << endl;
+	}
+	a = 0;
+	b = 0;
+	result = 0;
+
+	char response = ' ';
+	cin >> response;
+
+	if (response == 'y')
+	{
+		a = 1 + rand() % 9;
+		b = 1 + rand() % 9;
+		cout << "How much is " << a << " times " << b << " ?" << endl;
+		cout << "Enter your answer: ";
+		cin >> answer;
+		Multiplication(a, b, answer);
+	}
+	else
+		return 0;
+}
+
+int main()
+{
+
+	int a = 0;
+	int b = 0;
+	int answer = 0;
+
+	srand(time(NULL));
+	a = 1 + rand() % 9;
+	b = 1 + rand() % 9;
+	cout << "How much is " << a << " times " << b << " ?" << endl;
+	cout << "Enter your answer: ";
+	cin >> answer;
+	Multiplication(a, b, answer);
+}
