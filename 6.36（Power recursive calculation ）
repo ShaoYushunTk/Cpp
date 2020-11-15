@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+
+unsigned long power(unsigned long, unsigned long);
+int main()
+{
+	int base = 0, exponent = 0;
+	cout << "Enter the base: ";
+	cin >> base;
+	cout << "Enter the exponent: ";
+	cin >> exponent;
+	cout << power(base, exponent) << endl;
+}
+unsigned long power(unsigned long base, unsigned long exponent)
+{
+	if (exponent == 1)
+		return base;
+	else
+	{
+		return base * power(base, exponent - 1);
+	}
+}
