@@ -1,0 +1,44 @@
+// 6.31（cout Greatest commom divisor）.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//输入2个数，返回最大公约数
+
+#include<iostream>
+using namespace std;
+
+int CommomMultiple(int, int);
+int GetGCD(int, int);
+int main()
+{
+	int a = 0, b = 0;
+	cout << "Enter 2 numbers: ";
+	cin >> a >> b;
+	CommomMultiple(a, b);
+	GetGCD(a, b);
+}
+int CommomMultiple(int a, int b)
+{
+	int Min = a;
+	if (b < Min)
+		Min = b;
+	cout << "The commom Multiple: ";
+	for (int i = 2; i <= Min; i++)
+	{
+		if ((a % i == 0) && (b % i == 0))
+		{
+			cout << i << "\t";
+		}
+	}
+	cout << endl;
+	return 0;
+}
+int GetGCD(int a, int b)
+{
+	int c = 0;
+	while (a % b != 0)
+	{
+		c = a % b;
+		a = b;
+		b = c;
+	}
+	cout << "The Greatest commom divisor: " << c << endl;
+	return 0;
+}
