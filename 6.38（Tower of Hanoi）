@@ -1,0 +1,33 @@
+// 6.38（Tower of Hanoi）.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//汉诺塔
+
+#include<iostream>
+using namespace std;
+
+void Move(int n, int A, int B, int C)
+{
+	if (n == 1)
+	{
+		cout << "move " << n << " from " << A << " to " << C << endl;        //n=1,直接从A移到C
+	}
+	else
+	{
+		Move(n - 1, A, C, B);                  //n-1看成整体，整体从A移到B
+		cout << "move " << n << " from " << A << " to " << C << endl;      //n从A移到C
+		Move(n - 1, B, A, C);        //n-1整体从B移到C
+	}
+}
+void Hanoi(int n)        //检测输入n是否有效
+{
+	if (n <= 0)
+		return;
+	Move(n, 1, 2, 3);
+}
+
+int main()
+{
+	int number = 0;
+	cin >> number;
+	Hanoi(number);
+	return 0;
+}
