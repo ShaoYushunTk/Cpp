@@ -1,0 +1,33 @@
+// 6.23(fillCharacter Square).cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//输入边长和字符，输出由字符和边长组成的正方形
+
+#include<iostream>
+#include<string>
+using namespace std;
+
+int fillCharacter_Square(int, char);
+int main()
+{
+	int size = 0;
+	char fillCharacter = ' ';                             //char赋值需要单引号 '',对char初始化可用' '
+    fillCharacter_Square(size, fillCharacter);
+}
+
+int fillCharacter_Square(int size, char fillCharacter)
+{
+	cout << "Enter the size: ";
+	cin >> size;
+	cout << "Enter the fillCharacter: ";
+	cin >> fillCharacter;
+	cout << endl;
+
+    for (int i = 1; i <= size; i++)
+	{
+		for (int j = 1; j <= size; j++)
+		{
+			cout << fillCharacter;
+		}
+		cout << endl;
+	}
+	return 0;
+}
