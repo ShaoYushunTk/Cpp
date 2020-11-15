@@ -1,0 +1,41 @@
+// 6.33（Coin tossing）.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+//输入投掷硬币次数，输出正面和反面次数
+
+#include<iostream>
+#include<cstdlib>
+#include<ctime>
+using namespace std;
+
+int flip(long long);
+int main()
+{
+	long long Number = 0;
+	cout << "Enter the number of flips: ";
+	cin >> Number;
+	flip(Number);
+}
+int flip(long long length)
+{
+	int Head = 0;
+	int Tail = 0;
+	srand(time(NULL));
+	for (int j = 1; j <= length; j++)
+	{
+		int a = rand() % 2;
+		switch (a)
+		{
+		case 1:
+			Head++;
+			break;
+		case 0:
+			Tail++;
+			break;
+		default:
+			cout << "Wrong!";
+			break;
+		}
+	}
+	cout << "Numbers of Head: " << Head << endl
+		<< "Numbers of Tail: " << Tail << endl;
+	return 0;
+}
